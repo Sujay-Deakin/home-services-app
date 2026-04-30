@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'sujay17docker/home-services-app:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'sujay17docker/home-services-app:latest']
+
+images:
+  - 'sujay17docker/home-services-app:latest'

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book a Service – HomeServe</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; }
+        nav { background: #2c3e50; padding: 15px; }
+        nav a { color: white; margin-right: 20px; text-decoration: none; font-weight: bold; }
+        .container { max-width: 600px; margin: 40px auto; background: white; 
+                     padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; }
+        input, select { width: 100%; padding: 10px; margin: 8px 0 16px; 
+                        border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { background: #3498db; color: white; padding: 12px 30px; 
+                 border: none; border-radius: 5px; cursor: pointer; font-size: 1em; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        th { background: #2c3e50; color: white; padding: 10px; }
+        td { padding: 10px; border-bottom: 1px solid #eee; text-align: center; }
+        .status { background: #f39c12; color: white; padding: 3px 10px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/bookings">Book Now</a>
+    </nav>
+    <div class="container">
+        <h2>Book a Service</h2>
+        <form method="POST">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+            <label>Service</label>
+            <select name="service">
+                <option>Plumbing</option>
+                <option>Cleaning</option>
+                <option>Electrical</option>
+                <option>Gardening</option>
+                <option>Painting</option>
+                <option>AC Service</option>
+            </select>
+            <label>Preferred Date</label>
+            <input type="date" name="date" required>
+            <label>Phone Number</label>
+            <input type="text" name="phone" required>
+            <button type="submit">Confirm Booking</button>
+        </form>
+
+        <h2>Recent Bookings</h2>
+        <table>
+            <tr><th>Name</th><th>Service</th><th>Date</th><th>Phone</th><th>Status</th></tr>
+            {% for b in bookings %}
+            <tr>
+                <td>{{ b[0] }}</td>
+                <td>{{ b[1] }}</td>
+                <td>{{ b[2] }}</td>
+                <td>{{ b[3] }}</td>
+                <td><span class="status">{{ b[4] }}</span></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
