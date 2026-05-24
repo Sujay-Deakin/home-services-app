@@ -37,6 +37,10 @@ def index():
 def services():
     return render_template("services.html")
 
+@app.route("/health")
+def health():
+    return {"status": "healthy"}, 200
+
 @app.route("/bookings", methods=["GET", "POST"])
 def bookings():
     if request.method == "POST":
